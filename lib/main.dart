@@ -438,7 +438,7 @@ class DetailScreen extends StatelessWidget {
 
 🎬 លក្ខណៈរូបរាង
 តួអង្គទាំងអស់មានរូបរាងខ្មែរ និងសម្លៀកបំពាក់សមរម្យតាមជីវិតជនបទខ្មែរ។
-''';    '''
+''';
   } else if (title == 'Scenes') {
     content = '''
 🎬 ឈុតឆាកវីដេអូ
