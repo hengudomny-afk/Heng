@@ -281,13 +281,13 @@ class StudioScreen extends StatelessWidget {
 
           const SizedBox(height: 25),
 
-          _item(Icons.description, 'Script'),
-          _item(Icons.people, 'Characters'),
-          _item(Icons.movie_creation, 'Scenes'),
-          _item(Icons.image, 'Images'),
-          _item(Icons.video_library, 'Videos'),
-          _item(Icons.record_voice_over, 'Voice'),
-          _item(Icons.music_note, 'Music'),
+          _item(context, Icons.description, 'Script'),
+_item(context, Icons.people, 'Characters'),
+_item(context, Icons.movie_creation, 'Scenes'),
+_item(context, Icons.image, 'Images'),
+_item(context, Icons.video_library, 'Videos'),
+_item(context, Icons.record_voice_over, 'Voice'),
+_item(context, Icons.music_note, 'Music'),
 
           const SizedBox(height: 20),
 
@@ -326,19 +326,29 @@ class StudioScreen extends StatelessWidget {
     );
   }
 
-  Widget _item(IconData icon, String title) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 10),
-      child: ListTile(
-        leading: CircleAvatar(
-          child: Icon(icon),
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        trailing: const Icon(Icons.chevron_right),
+Widget _item(BuildContext context, IconData icon, String title) {
+  return Card(
+    margin: const EdgeInsets.only(bottom: 10),
+    child: ListTile(
+      leading: CircleAvatar(
+        child: Icon(icon),
       ),
-    );
-  }
+      title: Text(
+        title,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => StudioScreen(title: title),
+          ),
+        );
+      },
+    ),
+  );
+}
 }
