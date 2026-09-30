@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => StudioScreen(title: title),
+              builder: (_) => DetailScreen(title: title),
             ),
           );
         },
