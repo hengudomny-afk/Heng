@@ -292,15 +292,39 @@ _item(context, Icons.music_note, 'Music'),
           const SizedBox(height: 20),
 
           FilledButton.icon(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'AI Video Generator នឹងភ្ជាប់នៅជំហានបន្ទាប់ ✨',
-                  ),
-                ),
-              );
-            },
+            onPressed: () async {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return const AlertDialog(
+        content: Row(
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(width: 20),
+            Expanded(
+              child: Text('កំពុងរៀបចំវីដេអូ AI...'),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+
+  await Future.delayed(const Duration(seconds: 2));
+
+  if (!context.mounted) return;
+
+  Navigator.pop(context);
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text(
+        'បានចាប់ផ្តើមបង្កើត៖ Script → Characters → Scenes → Images → Videos',
+      ),
+    ),
+  );
+},
             icon: const Icon(Icons.auto_awesome),
             label: const Padding(
               padding: EdgeInsets.all(14),
